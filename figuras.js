@@ -12,7 +12,25 @@ function perimetroTriangulo(lado1, lado2, base) {
   return lado1 + lado2 + base;
 }
 
-function areaTriangulo(base, altura) {
+function alturaTraingulo(ladoGrande1, ladoGrande2, baseGrande) {
+  if (ladoGrande1 != ladoGrande2) {
+    alert("Recuerda que el Triángulo Isóceles tiene los 2 lados iguales.");
+  } else {
+    const ladoPequeno2 = baseGrande / 2;
+    const basePequeno = ladoGrande1;
+
+    const ladoPequeno2Cuadrado = ladoPequeno2 * ladoPequeno2;
+    const basePequenoCuadrado = basePequeno * basePequeno;
+
+    let ladoPequeno1 = Math.sqrt(basePequenoCuadrado - ladoPequeno2Cuadrado);
+
+    const altura = ladoPequeno1;
+    return altura;
+  }
+}
+
+function areaTriangulo(lado1, lado2, base) {
+  const altura = alturaTraingulo(lado1, lado2, base);
   return (base * altura) / 2;
 }
 
@@ -70,12 +88,10 @@ function calcularAreaTriangulo() {
   const inputLado1 = document.getElementById("InputLado1Triangulo");
   const inputLado2 = document.getElementById("InputLado2Triangulo");
   const inputBase = document.getElementById("InputBaseTriangulo");
-  const inputAltura = document.getElementById("InputAlturaTriangulo");
   const valueLado1 = Number(inputLado1.value);
   const valueLado2 = Number(inputLado2.value);
   const valueBase = Number(inputBase.value);
-  const valueAltura = Number(inputAltura.value);
-  const area = areaTriangulo(valueBase, valueAltura);
+  const area = areaTriangulo(valueLado1, valueLado2, valueBase);
   alert(area);
 }
 
